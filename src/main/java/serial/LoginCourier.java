@@ -8,7 +8,8 @@ public class LoginCourier {
         this.login = login;
         this.password = password;
     }
-    public LoginCourier(){
+
+    public LoginCourier() {
 
     }
 

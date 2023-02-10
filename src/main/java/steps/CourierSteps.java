@@ -5,10 +5,10 @@ import io.restassured.response.Response;
 import serial.CreateCourier;
 import serial.LoginCourier;
 
+import static constants.Urls.*;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
-import static constants.Urls.*;
 
 public class CourierSteps {
 
@@ -41,7 +41,7 @@ public class CourierSteps {
 
     @Step("Delete courier")
     public Response deleteCourier(String login, String pass) {
-        return  given()
+        return given()
                 .header("Content-type", "application/json")
                 .when()
                 .delete(courierDeletePreparingToString(getCourierId(login, pass)));
@@ -81,6 +81,7 @@ public class CourierSteps {
                 .statusCode(400)
                 .and().assertThat().body("message", equalTo("Недостаточно данных для создания учетной записи"));
     }
+
     @Step("Checking the presence of the courier id number by his login and password")
     public void checkAnswerAndPresenceId(Response response) {
         response.then()

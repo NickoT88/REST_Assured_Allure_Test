@@ -23,7 +23,7 @@ public class CreatingCourierTest {
     @Test
     @DisplayName("Creating new courier")
     @Description("Creating new courier with correct credentials and check the positive creating courier")
-    public void creatingCourierPositive (){
+    public void creatingCourierPositive() {
         Response responseCreate = courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASS, RANDOM_NAME);
         courierSteps.checkAnswerValidRegistration(responseCreate);
         Response responseDelete = courierSteps.deleteCourier(RANDOM_LOGIN, RANDOM_PASS);
@@ -33,7 +33,7 @@ public class CreatingCourierTest {
     @Test
     @DisplayName("Creating identical couriers")
     @Description("Checking response (status code and body) when trying to create identical couriers")
-    public void creatingIdenticalCouriersConflict  (){
+    public void creatingIdenticalCouriersConflict() {
         courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASS, RANDOM_NAME);
         Response responseIdentical = courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASS, RANDOM_NAME);
         courierSteps.checkAnswerReuseRegistrationData(responseIdentical);
@@ -42,7 +42,7 @@ public class CreatingCourierTest {
     @Test
     @DisplayName("Creating a courier with an existing login")
     @Description("Creating a courier with an existing login and password checking the response")
-    public void creatingCourierWithExistingLoginConflict (){
+    public void creatingCourierWithExistingLoginConflict() {
         courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASS, RANDOM_NAME);
         Response responseExisting = courierSteps.createCourier(RANDOM_LOGIN, RANDOM_PASS, RANDOM_NAME);
         courierSteps.checkAnswerReuseRegistrationData(responseExisting);

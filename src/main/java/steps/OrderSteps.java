@@ -4,9 +4,9 @@ import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import serial.CreateOrder;
 
+import static constants.Urls.ORDERS;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.notNullValue;
-import static constants.Urls.*;
 
 public class OrderSteps {
     @Step("Создание нового заказа с использованием {order}")

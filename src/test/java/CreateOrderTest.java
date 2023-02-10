@@ -22,15 +22,16 @@ public class CreateOrderTest {
         this.color = color;
     }
 
-    @Parameterized.Parameters
-    public static Object[][] getTestData(){
-        return new Object[][] {
+    @Parameterized.Parameters(name = "Тестовые данные: {0}")
+    public static Object[][] getTestData() {
+        return new Object[][]{
                 {List.of("")},
                 {List.of("BLACK")},
                 {List.of("GREY")},
-                {List.of("BLACK","GREY")},
+                {List.of("BLACK", "GREY")},
         };
     }
+
     @Before
     public void setUp() {
         RestAssured.baseURI = URL;
@@ -41,7 +42,7 @@ public class CreateOrderTest {
     @Description(value = "Check creating order with different list of color.")
     public void creatingOrderSuccess() {
         OrderSteps orderStep = new OrderSteps();
-        CreateOrder order = new CreateOrder("Василий", "Васильев", "Москва", "8", "+79224568299", 14, "2023-02-15", "Скорее!",  color);
+        CreateOrder order = new CreateOrder("Василий", "Васильев", "Москва", "8", "+79224568299", 14, "2023-02-15", "Скорее!", color);
         Response createOrderResponse = orderStep.createOrder(order);
         orderStep.checkOrderTrackNotNullNew(createOrderResponse);
     }
